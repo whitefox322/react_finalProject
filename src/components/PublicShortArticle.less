@@ -1,0 +1,58 @@
+@import "../styles/fonts";
+@import "../styles/sizes";
+@import "../styles/colors";
+
+.shortArticle {
+
+  &__line {
+    line-height: 2em;
+    color: @colorBlack !important;
+  }
+
+  &__head {
+    background: @colorLightPink !important;
+  }
+
+  &__title {
+    font-family: @fontMark;
+    font-size: @high;
+    color: @colorBlackHover;
+  }
+
+  &__img {
+    text-align: center;
+  }
+
+  &__pic {
+    display: inline-block;
+    max-height: 500px;
+    max-width: 800px;
+  }
+
+  &__text {
+    font-family: @fontComfort;
+    font-size: @default;
+    text-indent: 20px;
+    color: @colorBlack;
+  }
+
+  &__bottom {
+    font-family: @fontLobster;
+    font-size: @default;
+    color: @colorWhite;
+
+    &--bold {
+      font-weight: 700;
+      margin-right: 10px;
+    }
+  }
+
+  &__body {
+    background: @colorLightGreen !important;
+    margin: 0;
+  }
+
+  &__footer {
+    background: @colorLightPink !important;
+  }
+}

@@ -1,0 +1,41 @@
+@import "../styles/fonts";
+@import "../styles/sizes";
+@import "../styles/colors";
+
+.navi {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin: @low;
+
+  &__link,
+  &__downlink {
+    display: inline-block;
+    font-family: @fontGabriel;
+    font-size: @default;
+    color: @colorBlack;
+    padding: @low/4 @low/2;
+    background: @colorCynk;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: @colorBlackHover;
+      background: @colorCynkHover;
+      text-decoration: none;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+  }
+
+  &__link {
+    margin: 0 @low/4;
+    border: none;
+    border-radius: @default;
+  }
+
+  &__downlink {
+    margin: 0;
+    border: 1px solid @colorCynkHover;
+    border-radius: @default - 13px;
+  }
+}

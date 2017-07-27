@@ -1,0 +1,51 @@
+@import "../styles/fonts";
+@import "../styles/sizes";
+@import "../styles/colors";
+
+.fullArticle {
+  &__center {
+    text-align: center;
+  }
+
+  &__margin {
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-family: @fontMark;
+    font-size: @large;
+    color: @colorBlackHover;
+  }
+
+  &__img {
+    display: inline-block;
+    max-height: 500px;
+    max-width: 800px;
+  }
+
+  &__text {
+    font-family: @fontComfort;
+    font-size: @default;
+    text-indent: 20px;
+    text-align: justify;
+    line-height: 1.5em;
+    color: @colorBlack;
+  }
+
+  &__bottom {
+    font-family: @fontLobster;
+    font-size: @low;
+    color: @colorBlack;
+    line-height: 2em;
+
+    &--bold {
+      font-weight: 700;
+      margin-right: 10px;
+    }
+  }
+
+  &__btn {
+    font-family: @fontLobster;
+    font-size: @default;
+  }
+}
