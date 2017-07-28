@@ -1,16 +1,15 @@
 import React from 'react';
 
 import './PublicArticles.less';
-import FaCaretLeft from 'react-icons/lib/fa/caret-left';
-import FaCaretRight from 'react-icons/lib/fa/caret-right';
 import FaChevronLeft from 'react-icons/lib/fa/chevron-left';
 import FaChevronRight from 'react-icons/lib/fa/chevron-right';
 
 import {PublicShortArticle} from './PublicShortArticle';
+import {PublicTopPagination} from './PublicTopPagination';
 
 export class PublicArticles extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             articles: [],
             activePage: 1,
@@ -20,7 +19,22 @@ export class PublicArticles extends React.Component {
     }
 
     componentDidMount() {
+        let page = this.props.match.params.page;
+
+        if (!page) {
+            return this.props.history.push("/articles/1");
+        }
+
+        // else дописати ;
+
         this.getArticles();
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.activePage !== prevState.activePage) {
+            this.getArticles();
+            this.props.history.push(`/articles/${this.state.activePage}`);
+        }
     }
 
     async getArticles() {
@@ -36,19 +50,22 @@ export class PublicArticles extends React.Component {
         }
     }
 
+    routePage(page) {
+        if (page < 1 || page > this.state.totalPages) {
+            return;
+        }
+        this.setState({
+            activePage: page
+        });
+    }
+
     render() {
         return (
             <div>
-                <nav className="navi">
-                    <a className="navi__link">
-                        <FaCaretLeft/>
-                        Попередня
-                    </a>
-                    <a className="navi__link">
-                        Наступна
-                        <FaCaretRight/>
-                    </a>
-                </nav>
+                <PublicTopPagination
+                    activePage={this.state.activePage}
+                    goToPage={(page) => this.routePage(page)}
+                />
                 <div>
                     {
                         this.state.articles.map(article => {

@@ -16,7 +16,15 @@ export class App extends React.Component {
                     <div className="container">
                         <Route
                             exact
+                            path="/"
+                            component={PublicArticles}/>
+                        <Route
+                            exact
                             path="/articles"
+                            component={PublicArticles}/>
+                        <Route
+                            exact
+                            path="/articles/:page"
                             component={PublicArticles}/>
                         <Route
                             exact

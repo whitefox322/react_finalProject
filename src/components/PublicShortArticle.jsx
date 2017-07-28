@@ -13,9 +13,9 @@ export class PublicShortArticle extends React.Component {
             <div>
                 <div className="panel panel-default">
                     <div className="panel-heading shortArticle__head">
-                        <a className="list-group-item">
+                        <Link to={path} className="list-group-item">
                             <h4 className="list-group-item-heading shortArticle__title">{this.props.title}</h4>
-                        </a>
+                        </Link>
                     </div>
                     <div className="row panel-body shortArticle__body">
                         <div className="col-xs-12 shortArticle__img">

@@ -22,7 +22,7 @@ export class Header extends React.Component {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <Link to="/articles" className="navbar-brand">
+                        <Link to="/" className="navbar-brand">
                             MyBlog.com
                         </Link>
                     </div>
