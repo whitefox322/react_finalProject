@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 
 import './App.less';
 
@@ -14,21 +14,14 @@ export class App extends React.Component {
                 <div>
                     <Header/>
                     <div className="container">
-                        <Route
-                            exact
-                            path="/"
-                            component={PublicArticles}/>
-                        <Route
-                            exact
-                            path="/articles"
-                            component={PublicArticles}/>
+                        <Redirect to="/articles/1"/>
                         <Route
                             exact
                             path="/articles/:page"
                             component={PublicArticles}/>
                         <Route
                             exact
-                            path="/articles/:articleID/author/:authorID"
+                            path="/:page/article/:articleID/author/:authorID"
                             component={PublicFullArticle}/>
                     </div>
                 </div>

@@ -30,6 +30,8 @@ export class PublicFullArticle extends React.Component {
     }
 
     render() {
+        let path = `/articles/${this.props.match.params.page}`;
+
         return (
             <div>
                 <div className="row">
@@ -47,7 +49,7 @@ export class PublicFullArticle extends React.Component {
                         </span>
                     </div>
                     <div className="col-xs-6 fullArticle__margin">
-                        <Link to="/articles/1" type="button" className="btn btn-danger pull-right fullArticle__btn">
+                        <Link to={path} type="button" className="btn btn-danger pull-right fullArticle__btn">
                             <FaShareSquareO className="fullArticle__bottom--bold"/>
                             До статтей
                         </Link>

@@ -4,6 +4,7 @@ import {AppContainer} from 'react-hot-loader';
 import "jquery";
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap";
+import 'antd/dist/antd.less';
 
 import {App} from './components/App';
 

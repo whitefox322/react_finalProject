@@ -7,7 +7,7 @@ import FaLanguage from 'react-icons/lib/fa/language';
 
 export class PublicShortArticle extends React.Component {
     render() {
-        let path = `/articles/${this.props.articleID}/author/${this.props.authorID}`;
+        let path = `/${this.props.page}/article/${this.props.articleID}/author/${this.props.authorID}`;
 
         return (
             <div>

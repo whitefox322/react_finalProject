@@ -2,16 +2,11 @@
   {
     "id": "0",
     "name": "Статті",
-    "path": "/articles"
+    "path": "/articles/1"
   },
   {
     "id": "1",
     "name": "Автори",
     "path": "/authors"
-  },
-  {
-    "id": "2",
-    "name": "Коментарі",
-    "path": "/comments"
   }
 ]

@@ -1,45 +1,48 @@
 import React from 'react';
 
 import './PublicArticles.less';
-import FaChevronLeft from 'react-icons/lib/fa/chevron-left';
-import FaChevronRight from 'react-icons/lib/fa/chevron-right';
 
 import {PublicShortArticle} from './PublicShortArticle';
 import {PublicTopPagination} from './PublicTopPagination';
+import {PublicBottomPagination} from "./PublicBottomPagination";
 
 export class PublicArticles extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             articles: [],
+            pages: [],
             activePage: 1,
             limit: 5,
             totalPages: ''
         };
     }
+    componentWillReceiveProps(newProps) {
+        let newPage = newProps.match.params.page;
+        if (this.props.match.params.page !== newPage) {
+            this.getArticles(newPage);
+        }
+    }
 
     componentDidMount() {
         let page = this.props.match.params.page;
-
         if (!page) {
             return this.props.history.push("/articles/1");
         }
-
-        // else дописати ;
-
-        this.getArticles();
+        this.getArticles(page);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.state.activePage !== prevState.activePage) {
-            this.getArticles();
-            this.props.history.push(`/articles/${this.state.activePage}`);
+        let page = this.state.activePage;
+        if (page !== prevState.activePage) {
+            this.getArticles(page);
+            this.props.history.push(`/articles/${page}`);
         }
     }
 
-    async getArticles() {
+    async getArticles(page) {
         try {
-            let response = await fetch(`http://localhost:8081/api/articles/${this.state.activePage}/${this.state.limit}`);
+            let response = await fetch(`http://localhost:8081/api/articles/${page}/${this.state.limit}`);
             let responseJSON = await response.json();
             this.setState({
                 articles: responseJSON.data,
@@ -63,7 +66,8 @@ export class PublicArticles extends React.Component {
         return (
             <div>
                 <PublicTopPagination
-                    activePage={this.state.activePage}
+                    activePage={parseInt(this.props.match.params.page)}
+                    totalPages={this.state.totalPages}
                     goToPage={(page) => this.routePage(page)}
                 />
                 <div>
@@ -76,24 +80,19 @@ export class PublicArticles extends React.Component {
                                     image={article.thumbnail}
                                     author={article.authorFullName}
                                     authorID={article.authorID}
-                                    articleID={article.id}>
+                                    articleID={article.id}
+                                    page={parseInt(this.props.match.params.page)}>
                                     {article.shortContent}
                                 </PublicShortArticle>
                             );
                         })
                     }
                 </div>
-                <nav className="navi">
-                    <a className="navi__downlink">
-                        <FaChevronLeft/>
-                    </a>
-                    <a className="navi__downlink">1</a>
-                    <a className="navi__downlink">2</a>
-                    <a className="navi__downlink">3</a>
-                    <a className="navi__downlink">
-                        <FaChevronRight/>
-                    </a>
-                </nav>
+                <PublicBottomPagination
+                    activePage={parseInt(this.props.match.params.page)}
+                    totalPages={this.state.totalPages}
+                    goToPage={(page) => this.routePage(page)}
+                />
             </div>
         );
     }

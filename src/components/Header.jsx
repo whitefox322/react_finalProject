@@ -22,7 +22,7 @@ export class Header extends React.Component {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <Link to="/" className="navbar-brand">
+                        <Link to="/articles/1" className="navbar-brand">
                             MyBlog.com
                         </Link>
                     </div>
@@ -42,8 +42,13 @@ export class Header extends React.Component {
                         </ul>
                         <ul className="nav navbar-nav navbar-right">
                             <li>
-                                <Link to="/login">
-                                    Мій профіль
+                                <Link to="#">
+                                    Зареєструватися
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="#">
+                                    Увійти в кабінет
                                 </Link>
                             </li>
                         </ul>

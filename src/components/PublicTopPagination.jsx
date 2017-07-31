@@ -19,17 +19,33 @@ export class PublicTopPagination extends React.Component {
     }
 
     render() {
+        let path = `/articles/${this.props.activePage}`;
+        let stylePrev = "";
+        let styleNext = "";
+
+        if (this.props.activePage === 1) {
+            stylePrev = "disabled";
+        } else if (this.props.activePage === this.props.totalPages) {
+            styleNext = "disabled";
+        }
+
         return (
-            <nav className="navi">
-                <Link to="/articles/1" className="navi__link" onClick={() => this.goBack()}>
-                    <FaCaretLeft/>
-                    Попередня
-                </Link>
-                <Link to="/articles/1" className="navi__link" onClick={() => this.goNext()}>
-                    Наступна
-                    <FaCaretRight/>
-                </Link>
-            </nav>
+            <div className="navi">
+                <ul className="pager">
+                    <li className={stylePrev}>
+                        <Link to={path} className="navi__link" onClick={() => this.goBack()}>
+                            <FaCaretLeft/>
+                            Попередня
+                        </Link>
+                    </li>
+                    <li className={styleNext}>
+                        <Link to={path} className="navi__link" onClick={() => this.goNext()}>
+                            Наступна
+                            <FaCaretRight/>
+                        </Link>
+                    </li>
+                </ul>
+            </div>
         );
     }
 }
